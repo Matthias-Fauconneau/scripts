@@ -1,0 +1,2 @@
+#!/bin/fish
+git checkout (git rev-list -n 1 HEAD -- $argv[1])^ -- $argv[1]

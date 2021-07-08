@@ -1,0 +1,3 @@
+#!/bin/fish
+set args (cargo_args $argv)
+cargo -Z namespaced-features check $args

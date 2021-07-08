@@ -1,0 +1,2 @@
+#!/bin/fish
+avahi-publish-service Matthias _ftp._tcp 2121 & unftp --root-dir (pwd)

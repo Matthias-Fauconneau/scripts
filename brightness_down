@@ -1,0 +1,7 @@
+#!/bin/fish
+switch (bat /sys/class/backlight/intel_backlight/brightness)       
+ case 1
+  echo 0 > /sys/class/backlight/intel_backlight/brightness
+ case '*'
+  echo 1 > /sys/class/backlight/intel_backlight/brightness
+end

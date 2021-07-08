@@ -1,0 +1,2 @@
+#!/bin/fish
+bat (status dirname)/wofi-emoji.map | wofi --show dmenu | cut -d ' ' -f 1 | tr -d '\n' | wl-copy && wl-paste

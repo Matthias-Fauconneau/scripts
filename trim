@@ -1,0 +1,2 @@
+#!/bin/fish
+command $argv 2>&1 | while read -l l; echo -n \n$l; end

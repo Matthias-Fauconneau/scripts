@@ -1,6 +1,6 @@
 #!/bin/fish
 test -e .git || { echo "fatal: not a git repository: .git"; exit }
 echo '{"name":"'$argv[1]'"}'
-curl -u 'Matthias-Fauconneau' https://api.github.com/user/repos -d '{"name":"'$argv[1]'"}'
+curl -u Matthias-Fauconneau:(cat ~/.github) https://api.github.com/user/repos -d '{"name":"'$argv[1]'"}'
 git remote add origin git@github.com:Matthias-Fauconneau/$argv[1].git
 git push --set-upstream origin master

@@ -1,0 +1,2 @@
+#!/bin/fish
+gdb -batch -ex "exec-file $argv[1]" -ex "run $argv[2..]" -ex 'bt'

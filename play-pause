@@ -1,0 +1,10 @@
+#!/bin/fish
+if playerctl status
+ playerctl play-pause
+else if pgrep mpv
+ echo 'keypress space' | socat - /tmp/mpvsocket
+else
+ audacious
+ #mpv-music-shuffle
+ #lollypop
+end

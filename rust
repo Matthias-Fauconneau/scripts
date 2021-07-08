@@ -1,0 +1,2 @@
+#!/bin/fish
+echo "fn main() { dbg!($argv); }" | rustc - -o /var/tmp/rust && /var/tmp/rust; rm /var/tmp/rust

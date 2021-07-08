@@ -1,0 +1,48 @@
+include /etc/sway/config
+
+output * background #000000 solid_color
+output * scale 3
+
+input * repeat_delay 150
+input * repeat_rate 30
+input * xkb_options compose:ralt
+input * {
+ tap enabled
+ scroll_method two_finger
+ dwt enabled
+ middle_emulation enabled
+}
+
+exec mako --layer overlay --background-color "#000000" --default-timeout 2000
+exec wlsunset -l 48 -L 8
+exec swayidle -w timeout 3600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' timeout 36000 'loginctl suspend'
+exec poweralertd
+exec --no-startup-id pipewire
+exec /usr/libexec/xdg-desktop-portal-wlr
+exec /usr/libexec/xdg-desktop-portal -r
+
+bindsym Mod4+F11 exec brightness_down
+bindsym Mod4+F12 exec brightness_up
+bindsym Mod4+Shift+Escape exec wlogout
+bindsym Mod4+G exec firefox-bin-wayland --new-window
+bindsym Mod4+K exec kate
+bindsym Mod4+E exec dolphin
+bindsym Mod4+Ctrl+Escape exec ksysguard
+
+bindsym XF86AudioMute exec pavucontrol-qt
+bindsym XF86AudioLowerVolume exec pactl -- set-sink-volume 0 -1dB
+bindsym XF86AudioRaiseVolume exec pactl -- set-sink-volume 0 +1dB
+bindsym XF86AudioPlay exec play-pause
+bindsym XF86AudioNext exec playerctl next
+
+bindsym Mod4+Escape kill
+bar {
+    mode hide
+    status_command unixbar
+    colors {
+        statusline #808080ff
+        background #00000000
+        inactive_workspace #00000000 #00000000 #808080ff
+        active_workspace #00000000 #00000000 #ffffffff
+    }
+}
