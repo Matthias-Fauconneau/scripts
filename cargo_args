@@ -7,19 +7,21 @@ begin
 		test "$arg" && cd "$arg" && set i (math $i+1) && echo $arg
 	end
 end
-set bin (set arg $argv[$i]; test $arg && rg -q -e "name='$arg" Cargo.toml && echo --bin \"$arg\" && set i (math $i+1))
 set features
 while test $i -le (count $argv)
 	set arg $argv[$i]
-	if test $arg && rg -q -e "$arg=" Cargo.toml
+	if rg -q -e "$arg=" Cargo.toml
 		set -a features $arg
+		set i (math $i+1)
+	else if rg -q -e "name='$arg" Cargo.toml
+		set bin --bin \"$arg\"
 		set i (math $i+1)
 	else
 		break
 	end
 end
-test $features && set features --features=(string join , $features)
+test "$features" && set features --features=(string join , $features)
 set args $features $bin
-test $args && echo $args
-set run_args $argv[$i..] 
-test $run_args && echo $run_args >&2
+test "$args" && echo $args
+set run_args $argv[$i..]
+test "$run_args" && echo $run_args >&2

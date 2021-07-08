@@ -1,4 +1,4 @@
 #!/bin/fish
-set cargo_args (cargo_args $argv)
-set run_args (cargo_args $argv 2>&1)
-cargo -Z namespaced-features watch $cargo_args --no-gitignore -s "diagnostic-kate $cargo_args && cargo -Z namespaced-features run $cargo_args $run_args"
+set cargo_args (cargo_args $argv 2>/dev/null)
+set run_args (cargo_args $argv 2>&1 1>/dev/null)
+cargo -Z namespaced-features watch --no-gitignore -s "diagnostic-kate $cargo_args && cargo -Z namespaced-features run $cargo_args $run_args"
