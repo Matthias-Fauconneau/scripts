@@ -1,6 +1,5 @@
 #!/bin/fish
 set i 1
-set features
 while test $i -le (count $argv)
 	set arg $argv[$i]
 	if not test "$bin"; and rg -q -e "name='$arg" Cargo.toml
@@ -9,6 +8,8 @@ while test $i -le (count $argv)
 		set -a features $arg
 	else if test -e $arg/Cargo.toml
 		cd $arg
+	else if test $arg = '--release'
+		set -a args $arg
 	else
 		break
 	end
@@ -16,7 +17,7 @@ while test $i -le (count $argv)
 end
 test "$bin" && set bin "--bin $bin"
 test "$features" && set features --features (string join , $features)
-set args $bin $features
+set -p args $bin $features
 test "$args" && echo $args
 set run_args $argv[$i..]
 test "$run_args" && echo $run_args >&2
