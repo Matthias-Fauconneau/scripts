@@ -1,0 +1,2 @@
+#!/bin/env fish
+RUST_BACKTRACE=full $argv

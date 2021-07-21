@@ -14,7 +14,7 @@ while test $i -le (count $argv)
 		set -a features $arg
 		set i (math $i+1)
 	else if rg -q -e "name='$arg" Cargo.toml
-		set bin --bin \"$arg\"
+		set bin --bin $arg
 		set i (math $i+1)
 	else
 		break

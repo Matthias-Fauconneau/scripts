@@ -1,0 +1,3 @@
+#!/bin/fish
+set cargo_args (cargo_args $argv 2>/dev/null)
+cargo -Z namespaced-features build $cargo_args

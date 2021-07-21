@@ -1,3 +1,4 @@
 #!/bin/fish
-set args (cargo_args $argv)
-cargo -Z namespaced-features check $args
+set cargo_args (cargo_args $argv 2>/dev/null)
+#cargo -Z namespaced-features check (string split ' ' -- $cargo_args)
+cargo -Z namespaced-features watch --no-gitignore -q -s "diagnostic-kate $cargo_args"

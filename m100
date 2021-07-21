@@ -1,0 +1,4 @@
+#!/bin/fish
+rg -v 'm100 ssh-ed25519 ' ~/.ssh/known_hosts | sponge ~/.ssh/known_hosts
+set USER (string join '' (string sub -l 1 (string split '.' $USER)[1]) (string sub -l 7 (string split '.' $USER)[2]))
+ssh $USER@m100 #bashrc

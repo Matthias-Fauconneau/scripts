@@ -21,8 +21,8 @@ exec --no-startup-id pipewire
 exec /usr/libexec/xdg-desktop-portal-wlr
 exec /usr/libexec/xdg-desktop-portal -r
 
-bindsym Mod4+F11 exec brightness_down
-bindsym Mod4+F12 exec brightness_up
+bindsym Mod4+F11 exec ~/.local/bin/brightness_down
+bindsym Mod4+F12 exec ~/.local/bin/brightness_up
 bindsym Mod4+Shift+Escape exec wlogout
 bindsym Mod4+G exec firefox-bin-wayland --new-window
 bindsym Mod4+K exec kate
@@ -38,7 +38,7 @@ bindsym XF86AudioNext exec playerctl next
 bindsym Mod4+Escape kill
 bar {
     mode hide
-    status_command unixbar
+    status_command /opt/rust/bin/unixbar
     colors {
         statusline #808080ff
         background #00000000

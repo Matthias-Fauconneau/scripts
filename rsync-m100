@@ -1,0 +1,8 @@
+#!/bin/env fish
+set path $argv[1]
+test $path || set path .
+test (realpath $path) != $HOME || exit
+test (du -s --exclude=.git --exclude=target --exclude=Cargo.lock --exclude=build --exclude=debug --exclude '.*.kate-swp' $path | cut -f1) -le 300000 || exit 
+rg -v 'm100 ssh-ed25519 ' ~/.ssh/known_hosts | sponge ~/.ssh/known_hosts
+set USER (string join '' (string sub -l 1 (string split '.' $USER)[1]) (string sub -l 7 (string split '.' $USER)[2]))
+rsync -v -t -z -r -u --exclude=.git --exclude=target --exclude=Cargo.lock --exclude=build --exclude=debug --exclude '.*.kate-swp' ~/(realpath --relative-base=$HOME $path) $USER@m100:. $argv[2..]
