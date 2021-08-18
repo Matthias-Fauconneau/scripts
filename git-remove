@@ -1,0 +1,2 @@
+#!/bin/env fish
+git rebase --rebase-merges --onto $argv[1]^ $argv[1]

@@ -1,4 +1,4 @@
-#!/bin/fish
+#!/bin/env fish
 set i 1
 while test $i -le (count $argv)
 	set arg $argv[$i]
@@ -19,5 +19,5 @@ test "$bin" && set bin "--bin $bin"
 test "$features" && set features --features (string join , $features)
 set -p args $bin $features
 test "$args" && echo $args
-set run_args $argv[$i..]
+test $i -le (count $argv) && set run_args $argv[$i..]
 test "$run_args" && echo $run_args >&2

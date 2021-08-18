@@ -24,7 +24,7 @@ exec /usr/libexec/xdg-desktop-portal -r
 bindsym Mod4+F11 exec ~/.local/bin/brightness_down
 bindsym Mod4+F12 exec ~/.local/bin/brightness_up
 bindsym Mod4+Shift+Escape exec wlogout
-bindsym Mod4+G exec firefox-bin-wayland --new-window
+bindsym Mod4+G exec firefox-bin --new-window
 bindsym Mod4+K exec kate
 bindsym Mod4+E exec dolphin
 bindsym Mod4+Ctrl+Escape exec ksysguard
