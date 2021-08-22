@@ -3,7 +3,9 @@
 echo 1 > /sys/devices/system/cpu/intel_pstate/no_turbo
 cd /sys/devices/system/cpu && for core in policy*; echo power > $core/energy_performance_preference; end
 #x86_energy_perf_policy power
-echo 50 > /sys/devices/system/cpu/intel_pstate/max_perf_pct
+#echo 33 > /sys/devices/system/cpu/intel_pstate/max_perf_pct
+#echo 50 > /sys/devices/system/cpu/intel_pstate/max_perf_pct
+#echo 66 > /sys/devices/system/cpu/intel_pstate/max_perf_pct
 dell-bios-fan-control 0
 eselect rc restart i8kmon
 echo (cat /sys/devices/system/cpu/intel_pstate/max_perf_pct) (rg 'MHz\s+:\s+(\d+)' -oNr '$1' /proc/cpuinfo)
