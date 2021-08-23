@@ -1,26 +1,8 @@
 #!/bin/env fish
-set i 1
-while test $i -le (count $argv)
-	set arg $argv[$i]
-	if not test "$bin"; and rg -q -e "name='$arg" Cargo.toml
-		set bin $arg
-	else if rg -q -e "$arg=" Cargo.toml
-		set -a features $arg
-	else if test -e $arg/Cargo.toml
-		cd $arg
-	else if test $arg = '--release'
-		set -a args $arg
-	else
-		break
-	end
-	set i (math $i+1)
-end
-test "$bin" && set bin "--bin $bin"
-test "$features" && set features --features (string join , $features)
-set -p args -Zallow-features=edition2021,\
+/opt/rust/bin/cargo -Zallow-features=edition2021,\
 async_closure,trait_alias,associated_type_bounds,const_fn_trait_bound,const_trait_impl,asm,proc_macro_span,box_syntax,derive_default_enum,format_args_capture,if_let_guard,unboxed_closures,fn_traits,type_ascription,\
 array_zip,once_cell,array_methods,iter_zip,default_free_fn,\
-backtrace,rustc_attrs $bin $features
+backtrace,rustc_attrs $argv
 # edition2021: forward compatibility
 # async_closure: ui app dispatch queue
 # trait_alias, associated_type_bounds: iter IntoExactSizeIterator
@@ -38,6 +20,3 @@ backtrace,rustc_attrs $bin $features
 # default_free_fn: editor project_model::CargoConfig::default()
 # backtrace: anyhow cfg_attr backtrace mischecks
 # rustc_attrs: io-lifetimes cfg_attr rustc_attrs mischecks
-test "$args" && echo $args
-test $i -le (count $argv) && set run_args $argv[$i..]
-test "$run_args" && echo $run_args >&2

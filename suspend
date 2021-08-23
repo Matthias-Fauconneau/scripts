@@ -1,0 +1,7 @@
+#!/bin/sh
+sync
+/opt/rust/bin/gpu-on
+/opt/rust/bin/suspend
+/opt/rust/bin/gpu-off
+i8kmon&disown
+dmesg | rg discrete
