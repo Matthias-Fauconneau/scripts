@@ -2,4 +2,4 @@
 set cargo_args (cargo_args $argv 2>/dev/null)
 set run_args (cargo_args $argv 2>&1 1>/dev/null)
 echo $cargo_args $run_args
-zargo watch --no-gitignore -s "zargo run $cargo_args $run_args"
+cargo watch --no-gitignore -s "cargo run $cargo_args $run_args"

@@ -1,19 +1,20 @@
 #!/bin/env fish
-/opt/rust/bin/cargo -Zallow-features=edition2021,\
-async_closure,trait_alias,associated_type_bounds,const_fn_trait_bound,const_trait_impl,asm,proc_macro_span,box_syntax,derive_default_enum,format_args_capture,if_let_guard,unboxed_closures,fn_traits,type_ascription,\
+/opt/rust/bin/cargo -Zallow-features=\
+async_closure,trait_alias,associated_type_bounds,const_fn_trait_bound,const_trait_impl,asm,proc_macro_span,proc_macro_diagnostic,box_syntax,derive_default_enum,\
+format_args_capture,if_let_guard,unboxed_closures,fn_traits,type_ascription,destructuring_assignment,\
 array_zip,once_cell,array_methods,iter_zip,default_free_fn,\
 backtrace,rustc_attrs $argv
-# edition2021: forward compatibility
 # async_closure: ui app dispatch queue
 # trait_alias, associated_type_bounds: iter IntoExactSizeIterator
 # const_fn_trait_bound, const_trait_impl: num ZERO, text impl Zero
 # asm: rsix linux_raw_inline_asm syscalls
-# proc_macro_span: proc-macro2
+# proc_macro_span, proc_macro_diagnostic: proc-macro2, proc-macro-error
 # box_syntax: ui dispatch queue
 # derive_default_enum: text
 # format_args_capture: *
 # if_let_guard, unboxed_closures, fn_traits: ast interpret
 # type_ascription: dot (in CUDA combustion)
+# destructuring_assignment: combustion plot
 # array_zip: vector operations [image]
 # once_cell: image sRGB
 # array_methods, iter_zip: combustion

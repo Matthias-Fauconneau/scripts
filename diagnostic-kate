@@ -1,4 +1,3 @@
 #!/bin/fish
-#-Z namespaced-features
 /opt/rust/bin/diagnostic $argv | xargs -L 1 -r kate 2>/dev/null
 exit $pipestatus[1]

@@ -1,6 +1,8 @@
 include /etc/sway/config
 
 output * background #000000 solid_color
+seat * hide_cursor 1000
+seat * hide_cursor when-typing enable
 output * scale 3
 
 input * repeat_delay 150
@@ -25,6 +27,7 @@ bindsym Mod4+F11 exec ~/.local/bin/brightness_down
 bindsym Mod4+F12 exec ~/.local/bin/brightness_up
 bindsym Mod4+Shift+Escape exec wlogout
 bindsym Mod4+G exec firefox-bin --new-window
+bindsym Mod4+C exec vscodium --no-sandbox --unity-launch --enable-features=UseOzonePlatform --ozone-platform=wayland
 bindsym Mod4+K exec kate
 bindsym Mod4+E exec dolphin
 bindsym Mod4+Ctrl+Escape exec ksysguard

@@ -1,7 +1,3 @@
 #!/bin/fish
 set cargo_args (cargo_args $argv 2>/dev/null)
-#cargo -Z namespaced-features check (string split ' ' -- $cargo_args)
-#set -x CARGO_BUILD_RUSTC /opt/rust/toolchains/beta-x86_64-unknown-linux-gnu/bin/rustc && set -x RUSTC_BOOTSTRAP 1
-#set -x CARGO_BUILD_RUSTC /opt/rust/toolchains/nightly-2021-07-29-x86_64-unknown-linux-gnu/bin/rustc
-#set -x CARGO_BUILD_RUSTC /opt/rust/toolchains/nightly-2021-08-16-x86_64-unknown-linux-gnu/bin/rustc
 cargo watch --no-gitignore -q -s "diagnostic-kate $cargo_args" && rm -I Cargo.lock

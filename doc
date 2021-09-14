@@ -1,5 +1,5 @@
 #!/bin/fish
 test -e $argv[1]/Cargo.toml && cd $argv[1]
 #git pull
-#cargo -Z namespaced-features update
-cargo -Z namespaced-features doc -p $argv[1] --open
+cargo update
+cargo doc -p $argv[1] --open

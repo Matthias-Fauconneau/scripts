@@ -1,5 +1,4 @@
 #!/bin/env fish
 set cargo_args (cargo_args $argv 2>/dev/null | string split -n ' ')
 set run_args (cargo_args $argv 2>&1 1>/dev/null | string split -n ' ')
-#set -x CARGO_BUILD_RUSTC /opt/rust/toolchains/nightly-2021-07-29-x86_64-unknown-linux-gnu/bin/rustc
 cargo watch --no-gitignore -q -s "diagnostic-kate $cargo_args && cargo run $cargo_args $run_args" --no-restart
